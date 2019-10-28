@@ -38,7 +38,10 @@ def main():
                 model_outputs,
                 feed_dict={'image:0': input_image}
             )
-
+            print("heatmaps_result", heatmaps_result)
+            print("offsets_result", offsets_result)
+            print("displacement_fwd_result", displacement_fwd_result)
+            print("displacement_bwd_result", displacement_bwd_result)
             pose_scores, keypoint_scores, keypoint_coords = posenet.decode_multiple_poses(
                 heatmaps_result.squeeze(axis=0),
                 offsets_result.squeeze(axis=0),
