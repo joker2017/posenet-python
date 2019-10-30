@@ -5,15 +5,16 @@ from keras.preprocessing.image import load_img
 
 import tfcoreml
 import coremltools
+import posenet
 #import config
 from posenet.converter.config import load_config
 def convert2(model_id):
-    model_ord = posenet.model_id_to_ord(model_id)
-    cfg = load_config(model_ord)
+    #model_ord = posenet.model_id_to_ord(model_id)
+    cfg = load_config()
     checkpoints = cfg['checkpoints']
     image_size = cfg['imageSize']
    
-    chkpoint = checkpoints[model_id]
+    chkpoint = checkpoints['model_id']
 
     if chkpoint == 'mobilenet_v1_050':
         mobile_net_arch = cfg['mobileNet50Architecture']
