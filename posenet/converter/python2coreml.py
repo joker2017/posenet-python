@@ -49,6 +49,7 @@ def convert2(model_id, model_dir=MODEL_DIR):
         image_input_names=['image:0'],
         output_feature_names=output_tensor_names,
         is_bgr=False,
+        use_coreml_3=True,
         red_bias = -1, 
         green_bias = -1, 
         blue_bias = -1, 
