@@ -15,7 +15,7 @@ def convert2(model_id):
     checkpoints = cfg['checkpoints']
     print(checkpoints)
     imageSize = cfg['imageSize']
-    print(image_size)
+    print(imageSize)
     chkpoint = checkpoints[model_ord]
 
 
