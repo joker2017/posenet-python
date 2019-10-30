@@ -10,10 +10,7 @@ import tempfile
 
 
 
-import tfcoreml as tf_converter
 
-import tfcoreml
-import coremltools
 
 
 
