@@ -11,7 +11,9 @@ from posenet.converter.config import load_config
 def convert2(model_id):
     #model_ord = posenet.model_id_to_ord(model_id)
     cfg = load_config()
+    print(cfg)
     checkpoints = cfg['checkpoints']
+    print(checkpoints)
     image_size = cfg['imageSize']
    
     chkpoint = checkpoints[model_id]
