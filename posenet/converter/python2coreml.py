@@ -7,16 +7,16 @@ import tfcoreml
 import coremltools
 import posenet
 #from posenet.model import model_id_to_ord
-from posenet.converter.config import load_config
+from posenet.model import load_config
 def convert2(model_id):
-    #model_ord = model_id_to_ord(model_id)
-    cfg = load_config()
+    model_ord = model_id_to_ord(model_id)
+    cfg = load_config(model_ord)
     print(cfg)
     checkpoints = cfg['checkpoints']
     print(checkpoints)
     image_size = cfg['imageSize']
-   
-    chkpoint = checkpoints[model_id]
+    print(image_size)
+    chkpoint = checkpoints[model_ord]
 
 
     width = imageSize
