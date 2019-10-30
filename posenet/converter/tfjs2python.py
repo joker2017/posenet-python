@@ -213,7 +213,7 @@ def convert(model_id, model_dir, check=False):
             
             coreml_model = tfcoreml.convert(
                 tf_model_path=os.path.join(model_dir, "model-%s.pb" % chkpoint), 
-                mlmodel_path=os.path.join(model_dir, "model-%s-%s.mlmodel" % (chkpoint, str(image_size))), 
+                mlmodel_path=os.path.join(model_dir, "model-%s.mlmodel" % chkpoint), 
                 input_name_shape_dict=input_tensor_shapes,
                 image_input_names=['image:0'],
                 output_feature_names=output_node_names,
@@ -226,7 +226,7 @@ def convert(model_id, model_dir, check=False):
             coreml_model.author = 'joker2017'
             coreml_model.license = 'MIT'
             coreml_model.short_description = 'Ver.0.0.1'
-            coreml_model.save('./models/posenet'+ str(image_size) + '_' + chkpoint +'.mlmodel')
+            #coreml_model.save('./models/posenet'+ str(image_size) + '_' + chkpoint +'.mlmodel')
             if check and os.path.exists("./images/tennis_in_crowd.jpg"):
                 # Result TF
                 input_image = _read_imgfile("./images/tennis_in_crowd.jpg", width, height)
