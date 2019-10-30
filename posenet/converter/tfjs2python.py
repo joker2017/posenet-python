@@ -197,8 +197,26 @@ def convert(model_id, model_dir, check=False):
                 clear_devices=True,
                 initializer_nodes="")
 
+            input_tensor_shapes = {"image:0":[1,image_size, image_size, 3]} 
+            
+            coreml_model = tfcoreml.convert(
+                tf_model_path=os.path.join(model_dir, "model-%s.pb" % chkpoint), 
+                mlmodel_path=os.path.join(model_dir, "model-%s-%s.mlmodel" % (chkpoint, str(image_size))), 
+                input_name_shape_dict=input_tensor_shapes,
+                image_input_names=['image:0'],
+                output_feature_names=output_node_names,
+                is_bgr=False,
+                red_bias = -1, 
+                green_bias = -1, 
+                blue_bias = -1, 
+                image_scale = 2./255)
+            
+             coreml_model.author = 'joker2017'
+             coreml_model.license = 'MIT'
+             coreml_model.short_description = 'Ver.0.0.1'
+            
             if check and os.path.exists("./images/tennis_in_crowd.jpg"):
-                # Result
+                # Result TF
                 input_image = _read_imgfile("./images/tennis_in_crowd.jpg", width, height)
                 input_image = np.array(input_image, dtype=np.float32)
                 input_image = input_image.reshape(1, height, width, 3)
@@ -219,3 +237,11 @@ def convert(model_id, model_dir, check=False):
                 print(heatmaps_result[0:1, 0:1, :])
                 print(heatmaps_result.shape)
                 print(np.mean(heatmaps_result))
+                #Result CoreML
+                out = coreml_model.predict({'image__0': img})['heatmap__0']
+                print("#output coreml result.")
+                print(out.shape)
+                print(np.transpose(out))
+                print(out)
+                # print(out[:, 0:1, 0:1])
+                print(np.mean(out))
