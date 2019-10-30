@@ -197,7 +197,7 @@ def convert(model_id, model_dir, check=False):
 
             tf.train.write_graph(cg, model_dir, "model-%s.pbtxt" % chkpoint)
             output_node_names='heatmap,offset_2,displacement_fwd_2,displacement_bwd_2'
-            input_tensor_shapes = {"image:0":[1,image_size, image_size, 3]} 
+   
             # Freeze graph and write our final model file
             freeze_graph(
                 input_graph=os.path.join(model_dir, "model-%s.pbtxt" % chkpoint),
@@ -211,22 +211,7 @@ def convert(model_id, model_dir, check=False):
                 clear_devices=True,
                 initializer_nodes="")
             
-            coreml_model = tfcoreml.convert(
-                tf_model_path=os.path.join(model_dir, "model-%s.pb" % chkpoint), 
-                mlmodel_path=os.path.join(model_dir, "model-%s.mlmodel" % chkpoint), 
-                input_name_shape_dict=input_tensor_shapes,
-                image_input_names=['image:0'],
-                output_feature_names=output_node_names,
-                is_bgr=False,
-                red_bias = -1, 
-                green_bias = -1, 
-                blue_bias = -1, 
-                image_scale = 2./255)
-            
-            coreml_model.author = 'joker2017'
-            coreml_model.license = 'MIT'
-            coreml_model.short_description = 'Ver.0.0.1'
-            #coreml_model.save('./models/posenet'+ str(image_size) + '_' + chkpoint +'.mlmodel')
+
             if check and os.path.exists("./images/tennis_in_crowd.jpg"):
                 # Result TF
                 input_image = _read_imgfile("./images/tennis_in_crowd.jpg", width, height)
