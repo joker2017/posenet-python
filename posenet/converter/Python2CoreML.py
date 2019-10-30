@@ -9,7 +9,7 @@ import yaml
 def convert2()
     cfg = load_config()
     checkpoints = cfg['checkpoints']
-    image_size = cfg['imageSize']
+    imageSize = cfg['imageSize']
     chkpoint = checkpoints[model_id]
 
     if chkpoint == 'mobilenet_v1_050':
@@ -19,8 +19,8 @@ def convert2()
     else:
         mobile_net_arch = cfg['mobileNet100Architecture']
 
-    width = image_size
-    height = image_size
+    width = imageSize
+    height = imageSize
 
     if not os.path.exists(model_dir):
         os.makedirs(model_dir)
