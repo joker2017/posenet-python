@@ -6,7 +6,7 @@ from keras.preprocessing.image import load_img
 import tfcoreml
 import coremltools
 import yaml
-def convert2(imageSize, versionName)
+def convert2()
     cfg = load_config()
     checkpoints = cfg['checkpoints']
     image_size = cfg['imageSize']
