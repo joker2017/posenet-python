@@ -6,9 +6,9 @@ from keras.preprocessing.image import load_img
 import tfcoreml
 import coremltools
 #import config
-from posenet.converter import config
+from posenet.converter.config import load_config
 def convert2():
-    config.cfg = load_config()
+    cfg = load_config()
     checkpoints = cfg['checkpoints']
     imageSize = cfg['imageSize']
     chkpoint = checkpoints[model_id]
