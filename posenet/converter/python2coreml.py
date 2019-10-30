@@ -2,7 +2,7 @@ import tfcoreml as tf_converter
 import numpy as np
 from tensorflow.python.tools.freeze_graph import freeze_graph
 from keras.preprocessing.image import load_img
-
+import os
 import tfcoreml
 import coremltools
 import posenet
