@@ -15,6 +15,7 @@ CHK = CFG['chk']
 def download_file(checkpoint, filename, base_dir):
     output_path = os.path.join(base_dir, checkpoint, filename)
     url = posixpath.join(GOOGLE_CLOUD_STORAGE_DIR, checkpoint, filename)
+    print(url)
     req = urllib.request.Request(url)
     response = urllib.request.urlopen(req)
     if response.info().get('Content-Encoding') == 'gzip':
