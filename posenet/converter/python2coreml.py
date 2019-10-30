@@ -6,7 +6,7 @@ from keras.preprocessing.image import load_img
 import tfcoreml
 import coremltools
 import config
-import from posenet.converter import config
+from posenet.converter import config
 def convert2():
     config.cfg = load_config()
     checkpoints = cfg['checkpoints']
