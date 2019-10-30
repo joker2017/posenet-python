@@ -196,21 +196,20 @@ def convert(model_id, model_dir, check=False):
             checkpoint_path = saver.save(sess, save_path, write_state=False)
 
             tf.train.write_graph(cg, model_dir, "model-%s.pbtxt" % chkpoint)
-
+            output_node_names='heatmap,offset_2,displacement_fwd_2,displacement_bwd_2'
+            input_tensor_shapes = {"image:0":[1,image_size, image_size, 3]} 
             # Freeze graph and write our final model file
             freeze_graph(
                 input_graph=os.path.join(model_dir, "model-%s.pbtxt" % chkpoint),
                 input_saver="",
                 input_binary=False,
                 input_checkpoint=checkpoint_path,
-                output_node_names='heatmap,offset_2,displacement_fwd_2,displacement_bwd_2',
+                output_node_names=output_node_names,
                 restore_op_name="save/restore_all",
                 filename_tensor_name="save/Const:0",
                 output_graph=os.path.join(model_dir, "model-%s.pb" % chkpoint),
                 clear_devices=True,
                 initializer_nodes="")
-
-            input_tensor_shapes = {"image:0":[1,image_size, image_size, 3]} 
             
             coreml_model = tfcoreml.convert(
                 tf_model_path=os.path.join(model_dir, "model-%s.pb" % chkpoint), 
