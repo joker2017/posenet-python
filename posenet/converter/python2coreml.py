@@ -14,7 +14,7 @@ def convert2(model_id):
     print(cfg)
     checkpoints = cfg['checkpoints']
     print(checkpoints)
-    image_size = cfg['imageSize']
+    imageSize = cfg['imageSize']
     print(image_size)
     chkpoint = checkpoints[model_ord]
 
@@ -34,7 +34,7 @@ def convert2(model_id):
     # Output nodes. If there're multiple output ops, use comma separated string, e.g. "out1,out2".
     output_node_names = 'heatmap,offset_2,displacement_fwd_2,displacement_bwd_2'
     # output_node_names = 'Softmax' 
-    input_tensor_shapes = {"image:0":[1,imageSize, imageSize, 3]} 
+    input_tensor_shapes = {"image:0":[1, imageSize, imageSize, 3]} 
     # output_tensor_names = ['output:0']
     output_tensor_names = ['heatmap:0','offset_2:0','displacement_fwd_2:0','displacement_bwd_2:0']
 
