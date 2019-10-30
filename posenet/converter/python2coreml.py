@@ -6,11 +6,13 @@ from keras.preprocessing.image import load_img
 import tfcoreml
 import coremltools
 #import config
-from posenet.converter.config import load_config
-def convert2():
-    cfg = load_config()
+from posenet.converter.config import load_config, model_id_to_ord
+def convert2(model_id):
+    model_ord = model_id_to_ord(model_id)
+    cfg = load_config(model_ord)
     checkpoints = cfg['checkpoints']
-    imageSize = cfg['imageSize']
+    image_size = cfg['imageSize']
+   
     chkpoint = checkpoints[model_id]
 
     if chkpoint == 'mobilenet_v1_050':
