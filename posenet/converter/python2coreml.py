@@ -9,7 +9,7 @@ import posenet
 from posenet.model import model_id_to_ord
 from posenet.converter.config import load_config
 def convert2(model_id):
-    model_ord = posenet.model_id_to_ord(model_id)
+    model_ord = model_id_to_ord(model_id)
     cfg = load_config(model_ord)
     print(cfg)
     checkpoints = cfg['checkpoints']
