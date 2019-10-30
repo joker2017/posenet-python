@@ -211,9 +211,9 @@ def convert(model_id, model_dir, check=False):
                 blue_bias = -1, 
                 image_scale = 2./255)
             
-             coreml_model.author = 'joker2017'
-             coreml_model.license = 'MIT'
-             coreml_model.short_description = 'Ver.0.0.1'
+            coreml_model.author = 'joker2017'
+            coreml_model.license = 'MIT'
+            coreml_model.short_description = 'Ver.0.0.1'
             
             if check and os.path.exists("./images/tennis_in_crowd.jpg"):
                 # Result TF
