@@ -8,7 +8,11 @@ import coremltools
 import posenet
 from posenet.model import model_id_to_ord, load_config
 from posenet.converter.config import load_config
-def convert2(model_id, model_dir):
+
+MODEL_DIR = './_models'
+
+
+def convert2(model_id, model_dir=MODEL_DIR):
     model_ord = model_id_to_ord(model_id)
     cfg = load_config()
     print(cfg)
