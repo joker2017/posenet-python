@@ -52,8 +52,8 @@ def convert2(model_id, model_dir=MODEL_DIR):
         red_bias = -1, 
         green_bias = -1, 
         blue_bias = -1, 
-        image_scale = 2./255,
-        use_coreml_3=True,)
+        image_scale = 2./255)
+       # use_coreml_3=True,)
 
 
     coreml_model.author = 'joker2017'
