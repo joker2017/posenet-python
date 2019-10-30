@@ -16,12 +16,6 @@ def convert2(model_id):
    
     chkpoint = checkpoints['model_id']
 
-    if chkpoint == 'mobilenet_v1_050':
-        mobile_net_arch = cfg['mobileNet50Architecture']
-    elif chkpoint == 'mobilenet_v1_075':
-        mobile_net_arch = cfg['mobileNet75Architecture']
-    else:
-        mobile_net_arch = cfg['mobileNet100Architecture']
 
     width = imageSize
     height = imageSize
