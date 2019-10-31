@@ -34,7 +34,7 @@ def convert2(model_id, model_dir=MODEL_DIR):
     #graph_def_file = './models/model.pbtxt'
     # Frozen model's output name
     frozen_model_file = os.path.join(model_dir, "model-%s.pb" % chkpoint)
-    coreml_model_file = './models/model.mlmodel'
+    coreml_model_file = os.path.join(model_dir, "model-%s.mlmodel" % chkpoint)
     # Output nodes. If there're multiple output ops, use comma separated string, e.g. "out1,out2".
     output_node_names = 'heatmap,offset_2,displacement_fwd_2,displacement_bwd_2'
     # output_node_names = 'Softmax' 
