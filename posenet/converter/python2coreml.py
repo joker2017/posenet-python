@@ -60,7 +60,7 @@ def convert2(model_id, model_dir=MODEL_DIR):
     coreml_model.license = 'MIT'
     coreml_model.short_description = 'Ver.0.0.1'
 
-    coreml_model.save(model_dir + 'posenet'+ str(imageSize) + '_' + chkpoint +'.mlmodel')
+    coreml_model.save(model_dir + '/posenet'+ str(imageSize) + '_' + chkpoint +'.mlmodel')
     print("Model for CoreML saving")
 #image = 'https://instagram.fhel6-1.fna.fbcdn.net/vp/29600a9e592d04b6cdd649c5a7ebbee1/5E53949F/t51.2885-15/sh0.08/e35/p640x640/25008636_1075666015908842_2177456931973627904_n.jpg?_nc_ht=instagram.fhel6-1.fna.fbcdn.net&_nc_cat=102'
 #img = load_img("./images/tennis_in_crowd.jpg", target_size=(imageSize, imageSize))
